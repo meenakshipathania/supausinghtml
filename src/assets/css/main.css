@@ -368,6 +368,12 @@ body {
 .innerhome2{
     display: block;
 }
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
 .home2{
     display: flex;
 }
@@ -511,4 +517,38 @@ img.accoImg{
   }
 .parent{
     text-align: center;
+}
+.imageOuter1 {
+    display: none;
+}
+.imageOuter2 {
+    display: none;
+}
+.imageOuter3 {
+    display: none;
+}
+.imageOuter4 {
+    display: none;
+}
+.imageOuter5 {
+    display: none;
+}
+.imageOuter6 {
+    display: none;
+}
+.imageOuter7 {
+    display: none;
+}
+.imageOuter8 {
+    display: none;
+}
+.imageOuter9 {
+    display: none;
+}
+.morediv{
+    background-color: #fdf7f8;
+    text-align: right;
+}
+.morebtn{
+    margin: 10px 45px;
 }
