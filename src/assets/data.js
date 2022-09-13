@@ -348,12 +348,9 @@ function Topbar() {
       const { data, error } = await supabase
         .from("Checklist")
         .select("*")
-        // .eq("category_id", "1");
+        .eq("category_id", "1");
       Settext(data);
-      console.log(data);
-      for(let d=0; d < data.length; d++) {
-        console.log(data[d].category_id)
-      }
+      // console.log(data, error);
     }
     myApiCall();
   }, []);
@@ -542,23 +539,103 @@ function Topbar() {
               ></img>
                 <strong>{x.Name}</strong>
             </HashLink>
-             ))}           
+             ))}
+            {/* <HashLink to="#Navigation" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Navigation.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(1, 2).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink>
+            <HashLink to="#Search" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Search.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(2, 3).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink>
+            <HashLink to="#ProductList" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Product list.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(3, 4).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink>
+            <HashLink to="#ProductPage" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Product page.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(4, 5).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink>
+            <HashLink to="#Cart" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Cart.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(5, 6).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink>
+            <HashLink to="#Checkout" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Checkout.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(6, 7).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink>
+            <HashLink to="#Account" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Account.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(7, 8).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink>
+            <HashLink to="#Mobile" className="but">
+              <img
+                className="menuimg"
+                src={require("../../assets/images/Mobile.svg").default}
+                alt="homepage"
+              ></img>
+              {text1.slice(8, 9).map((x) => (
+                <strong>{x.Name}</strong>
+              ))}
+            </HashLink> */}
+           
           </div>
         </div>
         
       </header>
 
-      {text1.map((x) => (
       <div className="parent">
         <ul className="UnoList">
-          <div className="homediv1" id={x.Name}>
+          <div className="homediv1" id="Homepage">
             <div className="innerhome1">
               <div className="home1">
                 <img
-                  src={x.Image}
+                  src={require("../../assets/images/Homepage.svg").default}
                   alt="homepage"
                 ></img>
-                <h3 className="heading">{x.Name}</h3>
+                <h3 className="heading">Homepage</h3>
                 <div className="slider">
                   <div className="Aarzoo">
                     <span style={{ width: "0" }}></span>
@@ -631,9 +708,8 @@ function Topbar() {
           </div>
         </ul>
       </div>
-      ))}
 
-      {/* <div className="parent">
+      <div className="parent">
         <ul className="UnoList">
           <div className="homediv1" id="Navigation">
             <div className="innerhome1">
@@ -718,8 +794,8 @@ function Topbar() {
             )}
           </div>
         </ul>
-      </div> */}
-{/* 
+      </div>
+
       <div className="parent">
         <ul className="UnoList">
           <div className="homediv1" id="Search">
@@ -1236,7 +1312,7 @@ function Topbar() {
                     </div>
                   </div>
                 ))}
-                 {/* <div className="morediv"><button className="btn btn-primary morebtn">More...</button></div> *
+                 {/* <div className="morediv"><button className="btn btn-primary morebtn">More...</button></div> */}
               </div>
             )}
           </div>
@@ -1309,6 +1385,7 @@ function Topbar() {
                         <i className="fa fa-angle-down" aria-hidden="true"></i>
                       </button>
                     </div>
+                    {/* {image91 && ( */}
                     <div className="divi imageOuter9 " id="myImg">
                       {" "}
                       <img
@@ -1321,7 +1398,7 @@ function Topbar() {
                         <a href="#">Read more.</a>
                       </p>
                     </div>
-                    {/* )} 
+                    {/* )}  */}
                   </div>
                 ))}
                 <div className="morediv">
@@ -1331,7 +1408,7 @@ function Topbar() {
             )}
           </div>
         </ul>
-      </div> */}
+      </div>
     </>
   );
 }
