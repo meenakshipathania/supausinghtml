@@ -11,448 +11,456 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 function Topbar() {
   const [text, Settext] = useState([]);
   const [text1, Settext1] = useState([]);
-  const [text2, Settext2] = useState([]);
-  const [text3, Settext3] = useState([]);
-  const [text4, Settext4] = useState([]);
-  const [text5, Settext5] = useState([]);
-  const [text6, Settext6] = useState([]);
-  const [text7, Settext7] = useState([]);
-  const [text8, Settext8] = useState([]);
-  const [text9, Settext9] = useState([]);
-  const [show, toggleShow] = useState(true);
-  const [show1, toggleShow1] = useState(true);
-  const [show2, toggleShow2] = useState(true);
-  const [show3, toggleShow3] = useState(true);
-  const [show4, toggleShow4] = useState(true);
-  const [show5, toggleShow5] = useState(true);
-  const [show6, toggleShow6] = useState(true);
-  const [show7, toggleShow7] = useState(true);
-  const [show8, toggleShow8] = useState(true);
 
-  function selectAll() {
-    let items = document.getElementsByName("acs");
-    var count = document.getElementsByName("acs").length;
+  function selectAll(data) {
     let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
+    for (let i = 0; i < data.elements.length; i++) {
+      if (data.elements[i].isSelected == true) {
         acval = acval + 1;
       }
+      update(data.elements[i], data);
     }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
+    if (acval == data.elements.length) {
+      for (let i = 0; i < data.elements.length; i++) {
+        data.elements[i].isSelected = false;
       }
     } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
+      for (let i = 0; i < data.elements.length; i++) {
+        data.elements[i].isSelected = true;
       }
     }
   }
 
-  function selectAll1() {
-    let items = document.getElementsByName("acs1");
-    var count = document.getElementsByName("acs1").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
+  // function selectAll() {
+  //   let items = document.getElementsByName("acs");
+  //   var count = document.getElementsByName("acs").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+
+  // function selectAll1() {
+  //   let items = document.getElementsByName("acs1");
+  //   var count = document.getElementsByName("acs1").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+
+  // function selectAll2() {
+  //   let items = document.getElementsByName("acs2");
+  //   var count = document.getElementsByName("acs2").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+  // function selectAll3() {
+  //   let items = document.getElementsByName("acs3");
+  //   var count = document.getElementsByName("acs3").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+
+  // function selectAll4() {
+  //   let items = document.getElementsByName("acs4");
+  //   var count = document.getElementsByName("acs4").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+
+  // function selectAll5() {
+  //   let items = document.getElementsByName("acs5");
+  //   var count = document.getElementsByName("acs5").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+
+  // function selectAll6() {
+  //   let items = document.getElementsByName("acs6");
+  //   var count = document.getElementsByName("acs6").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+
+  // function selectAll7() {
+  //   let items = document.getElementsByName("acs7");
+  //   var count = document.getElementsByName("acs7").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+
+  // function selectAll8() {
+  //   let items = document.getElementsByName("acs8");
+  //   var count = document.getElementsByName("acs8").length;
+  //   let acval = 0;
+  //   for (let i = 0; i < items.length; i++) {
+  //     if (items[i].checked == true) {
+  //       acval = acval + 1;
+  //     }
+  //   }
+  //   if (acval == count) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = false;
+  //     }
+  //   } else if (acval >= 0) {
+  //     for (let i = 0; i < items.length; i++) {
+  //       items[i].checked = true;
+  //     }
+  //   }
+  // }
+  // function mobileImagesToggle9(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter9");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
+
+  function mobileImagesToggle(i) {
+    const namee = i.Guidlines.split(" ").join(".");
+    const ClName = `.imageOuter${namee}`;
+    const allmobileDiv = document.querySelector(ClName);
+    if (!allmobileDiv.style.display) {
+      allmobileDiv.style.display = "block";
+    } else if (allmobileDiv.style.display == "none") {
+      allmobileDiv.style.display = "block";
+    } else if (allmobileDiv.style.display == "block") {
+      allmobileDiv.style.display = "none";
     }
   }
 
-  function selectAll2() {
-    let items = document.getElementsByName("acs2");
-    var count = document.getElementsByName("acs2").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
-    }
-  }
-  function selectAll3() {
-    let items = document.getElementsByName("acs3");
-    var count = document.getElementsByName("acs3").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
-    }
-  }
+  // function mobileImagesToggle2(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter2");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
 
-  function selectAll4() {
-    let items = document.getElementsByName("acs4");
-    var count = document.getElementsByName("acs4").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
-    }
-  }
+  // function mobileImagesToggle3(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter3");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
 
-  function selectAll5() {
-    let items = document.getElementsByName("acs5");
-    var count = document.getElementsByName("acs5").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
-    }
-  }
+  // function mobileImagesToggle4(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter4");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
 
-  function selectAll6() {
-    let items = document.getElementsByName("acs6");
-    var count = document.getElementsByName("acs6").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
-    }
-  }
+  // function mobileImagesToggle5(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter5");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
 
-  function selectAll7() {
-    let items = document.getElementsByName("acs7");
-    var count = document.getElementsByName("acs7").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
-    }
-  }
+  // function mobileImagesToggle6(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter6");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
 
-  function selectAll8() {
-    let items = document.getElementsByName("acs8");
-    var count = document.getElementsByName("acs8").length;
-    let acval = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].checked == true) {
-        acval = acval + 1;
-      }
-    }
-    if (acval == count) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = false;
-      }
-    } else if (acval >= 0) {
-      for (let i = 0; i < items.length; i++) {
-        items[i].checked = true;
-      }
-    }
-  }
-  function mobileImagesToggle9(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter9");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
+  // function mobileImagesToggle7(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter7");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
 
-  function mobileImagesToggle1(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter1");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
-
-  function mobileImagesToggle2(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter2");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
-
-  function mobileImagesToggle3(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter3");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
-
-  function mobileImagesToggle4(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter4");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
-
-  function mobileImagesToggle5(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter5");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
-
-  function mobileImagesToggle6(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter6");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
-
-  function mobileImagesToggle7(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter7");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
-
-  function mobileImagesToggle8(i) {
-    const allmobileDiv = document.querySelectorAll(".imageOuter8");
-    allmobileDiv.forEach((divv, j) => {
-      if (i === j) {
-        if (divv.style.display === "none") {
-          divv.style.display = "block";
-        } else {
-          divv.style.display = "none";
-        }
-      } else {
-        divv.style.display = "none";
-      }
-    });
-  }
+  // function mobileImagesToggle8(i) {
+  //   const allmobileDiv = document.querySelectorAll(".imageOuter8");
+  //   allmobileDiv.forEach((divv, j) => {
+  //     if (i === j) {
+  //       if (divv.style.display === "none") {
+  //         divv.style.display = "block";
+  //       } else {
+  //         divv.style.display = "none";
+  //       }
+  //     } else {
+  //       divv.style.display = "none";
+  //     }
+  //   });
+  // }
 
   useEffect(() => {
     async function myApiCall() {
-      // let { data } = await supabase.from("Checklist").select("*");
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        // .eq("category_id", "1");
-      Settext(data);
-      console.log(data);
-      for(let d=0; d < data.length; d++) {
-        console.log(data[d].category_id)
+      const { data, error } = await supabase.from("Checklist").select("*");
+      // .eq("category_id", "1");
+      let group = data.reduce((r, a) => {
+        r[a.category_id] = [...(r[a.category_id] || []), a];
+        return r;
+      }, {});
+      const allKeys = Object.keys(group);
+      let allDatawithCategories = [];
+      for (let k = 0; k < allKeys.length; k++) {
+        const valueData = group[allKeys[k]];
+        const filteredData = {
+          name: allKeys[k],
+          elements: valueData,
+        };
+        allDatawithCategories.push(filteredData);
       }
+      Settext(allDatawithCategories);
     }
     myApiCall();
   }, []);
 
-  useEffect(() => {
-    async function myApiCall() {
-      // let { data } = await supabase.from("Checklist").select("*");
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "2");
-      Settext2(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     // let { data } = await supabase.from("Checklist").select("*");
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "2");
+  //     Settext2(data);
+  //     // console.log(data)
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
 
-  useEffect(() => {
-    async function myApiCall() {
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "3");
-      Settext3(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "3");
+  //     Settext3(data);
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
 
-  useEffect(() => {
-    async function myApiCall() {
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "4");
-      Settext4(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "4");
+  //     Settext4(data);
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
 
-  useEffect(() => {
-    async function myApiCall() {
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "5");
-      Settext5(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "5");
+  //     Settext5(data);
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
 
-  useEffect(() => {
-    async function myApiCall() {
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "6");
-      Settext6(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "6");
+  //     Settext6(data);
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
 
-  useEffect(() => {
-    async function myApiCall() {
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "7");
-      Settext7(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
-  useEffect(() => {
-    async function myApiCall() {
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "8");
-      Settext8(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "7");
+  //     Settext7(data);
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "8");
+  //     Settext8(data);
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
 
-  useEffect(() => {
-    async function myApiCall() {
-      const { data, error } = await supabase
-        .from("Checklist")
-        .select("*")
-        .eq("category_id", "9");
-      Settext9(data);
-      // console.log(data, error);
-    }
-    myApiCall();
-  }, []);
+  // useEffect(() => {
+  //   async function myApiCall() {
+  //     const { data, error } = await supabase
+  //       .from("Checklist")
+  //       .select("*")
+  //       .eq("category_id", "9");
+  //     Settext9(data);
+  //     // console.log(data, error);
+  //   }
+  //   myApiCall();
+  // }, []);
 
   useEffect(() => {
     async function myApi() {
@@ -463,174 +471,150 @@ function Topbar() {
     myApi();
   }, []);
 
-  function update() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs").length;
-    var checked = document.querySelectorAll(".asd:checked").length;
+  function update(element, all) {
+    if (element["isSelected"]) {
+      element["isSelected"] = false;
+    } else {
+      element["isSelected"] = true;
+    }
+    console.log(element)
+    const allselected = all.elements.filter((f) => f.isSelected === true);  
+    var count = all.elements.length;
+    var checked = allselected.length;
     var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo span").style.width = percentage + "%";
+    const className = `.Aarzoo${all.name} span`;
+    const InnerClass = `.checkbox${all.name}`;
+    
+    setTimeout(() => {
+      document.querySelector(className).style.width = percentage + "%";
+      const allInnerClass = document.querySelectorAll(`${InnerClass}`);
+      console.log(allInnerClass)
+      if (count == checked) {
+        allInnerClass.forEach((checkbox) => (checkbox.checked = true));
+      } else {
+        allInnerClass.forEach((checkbox) => (checkbox.checked = false));
+      }
+    }, 100);
   }
-  function update1() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs1").length;
-    var checked = document.querySelectorAll(".asd1:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo1 span").style.width = percentage + "%";
-  }
-  function update2() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs2").length;
-    var checked = document.querySelectorAll(".asd2:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo2 span").style.width = percentage + "%";
-  }
-  function update3() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs3").length;
-    var checked = document.querySelectorAll(".asd3:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo3 span").style.width = percentage + "%";
-  }
-  function update4() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs4").length;
-    var checked = document.querySelectorAll(".asd4:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo4 span").style.width = percentage + "%";
-  }
-  function update5() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs5").length;
-    var checked = document.querySelectorAll(".asd5:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo5 span").style.width = percentage + "%";
-  }
-  function update6() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs6").length;
-    var checked = document.querySelectorAll(".asd6:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo6 span").style.width = percentage + "%";
-  }
-  function update7() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs7").length;
-    var checked = document.querySelectorAll(".asd7:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo7 span").style.width = percentage + "%";
-  }
-  function update8() {
-    // const allcheck = document.querySelectorAll('.guidline');
-    var count = document.getElementsByName("acs8").length;
-    var checked = document.querySelectorAll(".asd8:checked").length;
-    var percentage = parseInt((checked / count) * 100, 10);
-    document.querySelector(".Aarzoo8 span").style.width = percentage + "%";
+
+  function showHideDiv(x) {
+    const clasName = `.homediv${x.name} .innerhome2`;    
+    if (!document.querySelector(clasName).style.display) {      
+      document.querySelector(clasName).style.display = "none";
+    } else if (document.querySelector(clasName).style.display == "none") {
+      document.querySelector(clasName).style.display = "block";
+    } else if (document.querySelector(clasName).style.display == "block") {
+      document.querySelector(clasName).style.display = "none";
+    }
   }
 
   return (
     <>
       <header style={{ textAlign: "center", display: "inline-block" }}>
-      
         <div className="topbar">
           <div className="menu">
-          {text1.map((x) => (
-            <HashLink to={x.Slug} className="but">
-              <img
-                className="menuimg"
-                src={x.Image}
-                alt="homepage"
-              ></img>
+            {text1.map((x) => (
+              <HashLink to={x.Slug} className="but">
+                <img className="menuimg" src={x.Image} alt="homepage"></img>
                 <strong>{x.Name}</strong>
-            </HashLink>
-             ))}           
+              </HashLink>
+            ))}
           </div>
         </div>
-        
       </header>
 
-      {text1.map((x) => (
-      <div className="parent">
-        <ul className="UnoList">
-          <div className="homediv1" id={x.Name}>
-            <div className="innerhome1">
-              <div className="home1">
-                <img
-                  src={x.Image}
-                  alt="homepage"
-                ></img>
-                <h3 className="heading">{x.Name}</h3>
-                <div className="slider">
-                  <div className="Aarzoo">
-                    <span style={{ width: "0" }}></span>
+      {text.map((x) => (
+        <div className="parent">
+          <ul className={`UnoList UnoList${x.name}`}>
+            <div className={`homediv1 homediv${x.name}`} id={x.name}>
+              <div className="innerhome1">
+                <div className="home1">
+                  <img src={x.Image} alt="homepage"></img>
+                  <h3 className="heading">{x.name}</h3>
+                  <div className="slider">
+                    <div className={`Aarzoo${x.name}`}>
+                      <span style={{ width: "0" }}></span>
+                    </div>
+                    <span>0</span>/4 completed
                   </div>
-                  <span>0</span>/4 completed
+                </div>
+                <div>
+                  <button
+                    className="butt1"
+                    onClick={() => {
+                      selectAll(x);
+                    }}
+                  >
+                    <span className="sp1">Check All</span>
+                  </button>
+                  <button
+                    className="butt3"
+                    onClick={() => {
+                      showHideDiv(x);
+                    }}
+                  >
+                    <span className="sp3">Hide</span>
+                  </button>
                 </div>
               </div>
-              <div>
-                <button
-                  className="butt1"
-                  onClick={() => {
-                    selectAll();
-                    update();
-                  }}
-                >
-                  <span className="sp1">Check All</span>
-                </button>
-                <button className="butt3" onClick={() => toggleShow(!show)}>
-                  <span className="sp3">Hide</span>
-                </button>
-              </div>
-            </div>
-            {show && (
-              <div className="innerhome2">
-                <div className="home2">
-                  <h5 className="header">Guidlines</h5>
-                  <h5 className="header">Implementation</h5>
-                  <h5 className="header">Impact</h5>
-                </div>
-                {text.map((x, i) => (
-                  <div>
-                    <div className="Item">
-                      <label className="item1">
-                        <input
-                          type="checkbox"
-                          name="acs"
-                          className="guidline asd"
-                          onClick={update}
-                        ></input>
-                        <span className="span1">{x.Guidlines}</span>
-                      </label>
-                      <div className="item2">
-                        <div className="iitt1"> {x.Implementation}</div>
+                <div className="innerhome2">
+                  <div className="home2">
+                    <h5 className="header">Guidlines</h5>
+                    <h5 className="header">Implementation</h5>
+                    <h5 className="header">Impact</h5>
+                  </div>
+                  {x.elements.map((e, i) => (
+                    <div>
+                      <div className="Item">
+                        <label className="item1">
+                          <input
+                            type="checkbox"
+                            name="acs"
+                            className={`checkbox${x.name}`}
+                            onClick={() => update(e, x)}
+                            value={x.isSelected}
+                          ></input>
+                          <span className="span1">{e.Guidlines}</span>
+                        </label>
+                        <div className="item2">
+                          <div className="iitt1"> {e.Implementation}</div>
+                        </div>
+                        <div className="item3">
+                          <div className="iitt1">{e.Impact}</div>
+                        </div>
+                        <button
+                          className="accBut"
+                          onClick={() => {
+                            mobileImagesToggle(e);
+                          }}
+                        >
+                          <i
+                            className="fa fa-angle-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
                       </div>
-                      <div className="item3">
-                        <div className="iitt1">{x.Impact}</div>
-                      </div>
-                      <button
-                        className="accBut"
-                        onClick={() => mobileImagesToggle1(i)}
+                      <div
+                        className={`divi imageOuter1 imageOuter${e.Guidlines}`}
                       >
-                        <i className="fa fa-angle-down" aria-hidden="true"></i>
-                      </button>
+                        <img
+                          className={`accoImg accoImg${x.name}`}
+                          src={e.Image}
+                          alt="homepage"
+                        ></img>
+                        <p style={{ textAlign: "left" }}>
+                          {e.Description} <a href="#">Read more.</a>
+                        </p>
+                      </div>
                     </div>
-                    <div className="divi imageOuter1">
-                      <img
-                        className="accoImg"
-                        src={x.Image}
-                        alt="homepage"
-                      ></img>
-                      <p style={{ textAlign: "left" }}>
-                        {x.Description} <a href="#">Read more.</a>
-                      </p>
-                    </div>
+                  ))}
+                  <div className="morediv">
+                    <button className="btn btn-primary morebtn">More...</button>
                   </div>
-                ))}
-                 {/* <div className="morediv"><button className="btn btn-primary morebtn">More...</button></div> */}
-              </div>
-            )}
-          </div>
-        </ul>
-      </div>
+                </div>
+            </div>
+          </ul>
+        </div>
       ))}
 
       {/* <div className="parent">
@@ -719,7 +703,7 @@ function Topbar() {
           </div>
         </ul>
       </div> */}
-{/* 
+      {/* 
       <div className="parent">
         <ul className="UnoList">
           <div className="homediv1" id="Search">
