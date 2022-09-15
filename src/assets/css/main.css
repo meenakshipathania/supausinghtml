@@ -368,12 +368,6 @@ body {
 .innerhome2{
     display: block;
 }
-.hide{
-    display: none;
-}
-.show{
-    display: block;
-}
 .home2{
     display: flex;
 }

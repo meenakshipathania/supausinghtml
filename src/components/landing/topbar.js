@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../../assets/css/main.css";
 import { HashLink } from "react-router-hash-link";
 import { createClient } from "@supabase/supabase-js";
-import $ from "jquery";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
@@ -31,203 +30,11 @@ function Topbar() {
     }
   }
 
-  // function selectAll() {
-  //   let items = document.getElementsByName("acs");
-  //   var count = document.getElementsByName("acs").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-
-  // function selectAll1() {
-  //   let items = document.getElementsByName("acs1");
-  //   var count = document.getElementsByName("acs1").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-
-  // function selectAll2() {
-  //   let items = document.getElementsByName("acs2");
-  //   var count = document.getElementsByName("acs2").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-  // function selectAll3() {
-  //   let items = document.getElementsByName("acs3");
-  //   var count = document.getElementsByName("acs3").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-
-  // function selectAll4() {
-  //   let items = document.getElementsByName("acs4");
-  //   var count = document.getElementsByName("acs4").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-
-  // function selectAll5() {
-  //   let items = document.getElementsByName("acs5");
-  //   var count = document.getElementsByName("acs5").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-
-  // function selectAll6() {
-  //   let items = document.getElementsByName("acs6");
-  //   var count = document.getElementsByName("acs6").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-
-  // function selectAll7() {
-  //   let items = document.getElementsByName("acs7");
-  //   var count = document.getElementsByName("acs7").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-
-  // function selectAll8() {
-  //   let items = document.getElementsByName("acs8");
-  //   var count = document.getElementsByName("acs8").length;
-  //   let acval = 0;
-  //   for (let i = 0; i < items.length; i++) {
-  //     if (items[i].checked == true) {
-  //       acval = acval + 1;
-  //     }
-  //   }
-  //   if (acval == count) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = false;
-  //     }
-  //   } else if (acval >= 0) {
-  //     for (let i = 0; i < items.length; i++) {
-  //       items[i].checked = true;
-  //     }
-  //   }
-  // }
-  // function mobileImagesToggle9(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter9");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
   function mobileImagesToggle(i) {
-    const namee = i.Guidlines.split(" ").join(".");
-    const ClName = `.imageOuter${namee}`;
+    const namee = i.Guidlines.split(" ").join("").split(",").join("").split(".").join("");
+    let ClName = `.imageOuter${namee}`;
     const allmobileDiv = document.querySelector(ClName);
+    console.log(allmobileDiv)
     if (!allmobileDiv.style.display) {
       allmobileDiv.style.display = "block";
     } else if (allmobileDiv.style.display == "none") {
@@ -237,112 +44,7 @@ function Topbar() {
     }
   }
 
-  // function mobileImagesToggle2(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter2");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
-  // function mobileImagesToggle3(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter3");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
-  // function mobileImagesToggle4(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter4");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
-  // function mobileImagesToggle5(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter5");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
-  // function mobileImagesToggle6(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter6");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
-  // function mobileImagesToggle7(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter7");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
-  // function mobileImagesToggle8(i) {
-  //   const allmobileDiv = document.querySelectorAll(".imageOuter8");
-  //   allmobileDiv.forEach((divv, j) => {
-  //     if (i === j) {
-  //       if (divv.style.display === "none") {
-  //         divv.style.display = "block";
-  //       } else {
-  //         divv.style.display = "none";
-  //       }
-  //     } else {
-  //       divv.style.display = "none";
-  //     }
-  //   });
-  // }
-
-  useEffect(() => {
+   useEffect(() => {
     async function myApiCall() {
       const { data, error } = await supabase.from("Checklist").select("*");
       // .eq("category_id", "1");
@@ -365,108 +67,11 @@ function Topbar() {
     myApiCall();
   }, []);
 
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     // let { data } = await supabase.from("Checklist").select("*");
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "2");
-  //     Settext2(data);
-  //     // console.log(data)
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "3");
-  //     Settext3(data);
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "4");
-  //     Settext4(data);
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "5");
-  //     Settext5(data);
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "6");
-  //     Settext6(data);
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "7");
-  //     Settext7(data);
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "8");
-  //     Settext8(data);
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-
-  // useEffect(() => {
-  //   async function myApiCall() {
-  //     const { data, error } = await supabase
-  //       .from("Checklist")
-  //       .select("*")
-  //       .eq("category_id", "9");
-  //     Settext9(data);
-  //     // console.log(data, error);
-  //   }
-  //   myApiCall();
-  // }, []);
-
   useEffect(() => {
     async function myApi() {
       let { data } = await supabase.from("Categories").select("*");
       Settext1(data);
-      // console.log(data, error);
+      console.log(data);
     }
     myApi();
   }, []);
@@ -488,10 +93,10 @@ function Topbar() {
     setTimeout(() => {
       document.querySelector(className).style.width = percentage + "%";
       const allInnerClass = document.querySelectorAll(`${InnerClass}`);
-      console.log(allInnerClass)
       if (count == checked) {
         allInnerClass.forEach((checkbox) => (checkbox.checked = true));
-      } else {
+      } 
+      if (checked == 0) {
         allInnerClass.forEach((checkbox) => (checkbox.checked = false));
       }
     }, 100);
@@ -529,6 +134,7 @@ function Topbar() {
             <div className={`homediv1 homediv${x.name}`} id={x.name}>
               <div className="innerhome1">
                 <div className="home1">
+                  {/* {text1.map((j)=>( */}
                   <img src={x.Image} alt="homepage"></img>
                   <h3 className="heading">{x.name}</h3>
                   <div className="slider">
@@ -595,7 +201,7 @@ function Topbar() {
                         </button>
                       </div>
                       <div
-                        className={`divi imageOuter1 imageOuter${e.Guidlines}`}
+                        className={`divi imageOuter1 imageOuter${e.Guidlines.split(" ").join("").split(",").join("").split(".").join("")}`}
                       >
                         <img
                           className={`accoImg accoImg${x.name}`}
