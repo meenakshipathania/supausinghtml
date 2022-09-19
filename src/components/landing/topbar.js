@@ -14,12 +14,12 @@ function Topbar() {
   function selectAll(data) {
     let acval = 0;
     for (let i = 0; i < data.elements.length; i++) {
-      if (data.elements[i].isSelected == true) {
+      if (data.elements[i].isSelected === true) {
         acval = acval + 1;
       }
       update(data.elements[i], data);
     }
-    if (acval == data.elements.length) {
+    if (acval === data.elements.length) {
       for (let i = 0; i < data.elements.length; i++) {
         data.elements[i].isSelected = false;
       }
@@ -34,20 +34,18 @@ function Topbar() {
     const namee = i.Guidlines.split(" ").join("").split(",").join("").split(".").join("");
     let ClName = `.imageOuter${namee}`;
     const allmobileDiv = document.querySelector(ClName);
-    console.log(allmobileDiv)
     if (!allmobileDiv.style.display) {
       allmobileDiv.style.display = "block";
-    } else if (allmobileDiv.style.display == "none") {
+    } else if (allmobileDiv.style.display === "none") {
       allmobileDiv.style.display = "block";
-    } else if (allmobileDiv.style.display == "block") {
+    } else if (allmobileDiv.style.display === "block") {
       allmobileDiv.style.display = "none";
     }
   }
 
    useEffect(() => {
     async function myApiCall() {
-      const { data, error } = await supabase.from("Checklist").select("*");
-      // .eq("category_id", "1");
+      const { data } = await supabase.from("Checklist").select("*, Categories(Name,Image,Slug)");
       let group = data.reduce((r, a) => {
         r[a.category_id] = [...(r[a.category_id] || []), a];
         return r;
@@ -56,8 +54,12 @@ function Topbar() {
       let allDatawithCategories = [];
       for (let k = 0; k < allKeys.length; k++) {
         const valueData = group[allKeys[k]];
+        let names = JSON.parse(JSON.stringify(valueData));        
         const filteredData = {
-          name: allKeys[k],
+          name : allKeys[k],
+          nammm : names && names[0].Categories ? names[0].Categories.Name : "",
+          image : names && names[0].Categories ? names[0].Categories.Image : "",
+          slug : names && names[0].Categories ? names[0].Categories.Slug : "",
           elements: valueData,
         };
         allDatawithCategories.push(filteredData);
@@ -71,7 +73,7 @@ function Topbar() {
     async function myApi() {
       let { data } = await supabase.from("Categories").select("*");
       Settext1(data);
-      console.log(data);
+      // console.log(data);
     }
     myApi();
   }, []);
@@ -82,7 +84,6 @@ function Topbar() {
     } else {
       element["isSelected"] = true;
     }
-    console.log(element)
     const allselected = all.elements.filter((f) => f.isSelected === true);  
     var count = all.elements.length;
     var checked = allselected.length;
@@ -93,10 +94,13 @@ function Topbar() {
     setTimeout(() => {
       document.querySelector(className).style.width = percentage + "%";
       const allInnerClass = document.querySelectorAll(`${InnerClass}`);
-      if (count == checked) {
+      console.log(allInnerClass)
+      console.log(count)
+      console.log(checked)
+      if (count === checked) {
         allInnerClass.forEach((checkbox) => (checkbox.checked = true));
       } 
-      if (checked == 0) {
+      if (checked === 0) {
         allInnerClass.forEach((checkbox) => (checkbox.checked = false));
       }
     }, 100);
@@ -106,9 +110,9 @@ function Topbar() {
     const clasName = `.homediv${x.name} .innerhome2`;    
     if (!document.querySelector(clasName).style.display) {      
       document.querySelector(clasName).style.display = "none";
-    } else if (document.querySelector(clasName).style.display == "none") {
+    } else if (document.querySelector(clasName).style.display === "none") {
       document.querySelector(clasName).style.display = "block";
-    } else if (document.querySelector(clasName).style.display == "block") {
+    } else if (document.querySelector(clasName).style.display === "block") {
       document.querySelector(clasName).style.display = "none";
     }
   }
@@ -131,12 +135,12 @@ function Topbar() {
       {text.map((x) => (
         <div className="parent">
           <ul className={`UnoList UnoList${x.name}`}>
-            <div className={`homediv1 homediv${x.name}`} id={x.name}>
+            <div className={`homediv1 homediv${x.name}`} id={x.nammm}>
               <div className="innerhome1">
                 <div className="home1">
                   {/* {text1.map((j)=>( */}
-                  <img src={x.Image} alt="homepage"></img>
-                  <h3 className="heading">{x.name}</h3>
+                  <img src={x.image} alt="homepage"></img>
+                  <h3 className="heading">{x.nammm}</h3>
                   <div className="slider">
                     <div className={`Aarzoo${x.name}`}>
                       <span style={{ width: "0" }}></span>
@@ -178,7 +182,7 @@ function Topbar() {
                             name="acs"
                             className={`checkbox${x.name}`}
                             onClick={() => update(e, x)}
-                            value={x.isSelected}
+                            // value={x.isSelected}
                           ></input>
                           <span className="span1">{e.Guidlines}</span>
                         </label>
@@ -215,7 +219,7 @@ function Topbar() {
                     </div>
                   ))}
                   <div className="morediv">
-                    <button className="btn btn-primary morebtn">More...</button>
+                    <a href={x.slug}><button className="btn btn-primary morebtn">More...</button></a>
                   </div>
                 </div>
             </div>
