@@ -1,18 +1,19 @@
 import React from 'react';
-import Home from './home';
+import CatDetail from './detail';
+// import Topbar from './topbar';
 // import Checklist from './checklist';
 
-function Home() {
+function Detail() {
     // const [drawer, drawerAction] = useToggle(false);
     return (
         <>
             {/* <Drawer drawer={drawer} action={drawerAction.toggle} />
             <HeaderHomeThree action={drawerAction.toggle} />
             <BackToTop className="back-to-top-3" /> */}
-            <Home />
+            <CatDetail />
             {/* <Checklist /> */}
         </>
     );
 }
 
-export default Home;
+export default Detail;

@@ -1,6 +1,9 @@
 import React from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import Landing from './components/landing';
+import Detail from './components/CategoryDetail';
+// import Home from './components/Homepage';
+// import Navi from './components/Navigation';
 
 
 function Rout() {
@@ -25,6 +28,7 @@ function Rout() {
                     {/* <ScrollToTop> */}
                         <Routes>
                             <Route exact path="/" element={ <Landing />} />
+                            <Route exact path="/:name" element={ <Detail />} />
                         </Routes>
                     {/* </ScrollToTop> */}
                 </Router>

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "../../assets/css/main.css";
-import { HashLink } from "react-router-hash-link";
-import { Link } from 'react-router-dom';
+// import { HashLink } from "react-router-hash-link";
 import { createClient } from "@supabase/supabase-js";
+import { useParams } from "react-router-dom";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-function Topbar() {
-  const [text, Settext] = useState([]);
-  const [text1, Settext1] = useState([]);
-
-  function selectAll(data) {
+function CatDetail() {
+    const { name } = useParams();
+    const [text, Settext] = useState([]);
+    const [text1, Settext1] = useState([]);
+    console.log(name);
+function selectAll(data) {
     let acval = 0;
     for (let i = 0; i < data.elements.length; i++) {
       if (data.elements[i].isSelected === true) {
@@ -58,13 +59,15 @@ function Topbar() {
         let names = JSON.parse(JSON.stringify(valueData));        
         const filteredData = {
           name : allKeys[k],
-          // id : names && names[0].Categories ? names[0].Categories.Id : "",
           nammm : names && names[0].Categories ? names[0].Categories.Name : "",
           image : names && names[0].Categories ? names[0].Categories.Image : "",
           slug : names && names[0].Categories ? names[0].Categories.Slug : "",
           elements: valueData,
         };
-        allDatawithCategories.push(filteredData);
+        if(filteredData.name == name){
+            allDatawithCategories.push(filteredData);
+        }
+        
       }
       Settext(allDatawithCategories);
     }
@@ -118,29 +121,14 @@ function Topbar() {
       document.querySelector(clasName).style.display = "none";
     }
   }
-
   return (
     <>
-      <header style={{ textAlign: "center", display: "inline-block" }}>
-        <div className="topbar">
-          <div className="menu">
-            {text1.map((x) => (
-              <HashLink to={x.Slug} className="but">
-                <img className="menuimg" src={x.Image} alt="homepage"></img>
-                <strong>{x.Name}</strong>
-              </HashLink>
-            ))}
-          </div>
-        </div>
-      </header>
-
       {text.map((x) => (
-        <div className="parent">
+        <div className="parent menu">
           <ul className={`UnoList UnoList${x.name}`}>
             <div className={`homediv1 homediv${x.name}`} id={x.nammm}>
               <div className="innerhome1">
                 <div className="home1">
-                  {/* {text1.map((j)=>( */}
                   <img src={x.image} alt="homepage"></img>
                   <h3 className="heading">{x.nammm}</h3>
                   <div className="slider">
@@ -175,7 +163,7 @@ function Topbar() {
                     <h5 className="header">Implementation</h5>
                     <h5 className="header">Impact</h5>
                   </div>
-                  {x.elements.slice(0,4).map((e, i) => (
+                  {x.elements.map((e, i) => (
                     <div>
                       <div className="Item">
                         <label className="item1">
@@ -184,7 +172,7 @@ function Topbar() {
                             name="acs"
                             className={`checkbox${x.name}`}
                             onClick={() => update(e, x)}
-                            // value={x.isSelected}
+                            value={x.isSelected}
                           ></input>
                           <span className="span1">{e.Guidlines}</span>
                         </label>
@@ -220,9 +208,9 @@ function Topbar() {
                       </div>
                     </div>
                   ))}
-                  <div className="morediv">
-                    <Link to={x.name}><button className="btn btn-primary morebtn">More...</button></Link>
-                  </div>
+                  {/* <div className="morediv">
+                    <button className="btn btn-primary morebtn">More...</button>
+                  </div> */}
                 </div>
             </div>
           </ul>
@@ -232,4 +220,4 @@ function Topbar() {
   );
 }
 
-export default Topbar;
+export default CatDetail;
